@@ -55,12 +55,15 @@ public class hiController {
         return "index";//在没有配置的情况下，return "hello”; 或者return "hello"都可以，它们都会到templates/index.html去。
 
     }
-
+@Autowired
+private ProductService productService;
     @RequestMapping("/in_shop")
     public String jumpenterShop1(@RequestParam("hotshopId0") String shopID,
                                  @RequestParam("hotshopName0") String password,
                                  HttpSession session, Map<String,Object> map) {
         map.put("customer_service_phone", "17301231231");
+        List<ProductInfo> dishs=productService.findByShopId(shopID);
+        session.setAttribute("enterShopDishs", dishs);
 
         return "shops/enterShop";//在没有配置的情况下，return "hello”; 或者return "hello"都可以，它们都会到templates/index.html去。
 
@@ -101,6 +104,7 @@ public class hiController {
             session.setAttribute("shop_name0", "米奇妙妙屋");
             session.setAttribute("shop_price0", "10");
             session.setAttribute("login_username", user.getLastname());
+            session.setAttribute("login_userID", user.getId());
             session.setAttribute("shop_url", "detailsp.html?shop_id=1");
 
 
@@ -123,8 +127,7 @@ public class hiController {
     }
 
 
-    @Autowired
-    private ProductService productService;
+
     @RequestMapping("/test/list")
     public String list(@RequestParam(value = "page", defaultValue = "1") Integer page,
                        @RequestParam(value = "size", defaultValue = "10") Integer size,

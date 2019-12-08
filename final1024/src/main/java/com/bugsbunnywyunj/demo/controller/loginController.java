@@ -104,6 +104,7 @@ public class loginController {
         if(!StringUtils.isEmpty(password)&&user.getPassWord().equals(password))
         {
             session.setAttribute("login_username", user.getLastname());
+            session.setAttribute("login_userID", user.getId());
             return new ModelAndView("product/index", map);
         }else{
             return new ModelAndView("user/shoperRegister", map);

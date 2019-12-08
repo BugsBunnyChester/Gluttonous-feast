@@ -18,6 +18,16 @@ public class User {
     private  String IDcdNumber;
     @Column(name="true_name",length = 50)
     private String trueName;
+    @Column(name="address",length = 50)
+    private  String address;
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
     public String getTrueName() {
         return trueName;

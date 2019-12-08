@@ -1,0 +1,44 @@
+#hreftext:
+spring:
+  freemarker:
+    template-loader-path:
+       classpath:/templates/
+    cache:
+      false
+    suffix: .ftl
+    content-type: text/html
+    charset: utf-8
+    check-template-location: true
+    expose-request-attributes: false
+    expose-session-attributes: false
+    request-context-attribute: request
+
+  thymeleaf:
+    cache: false
+
+
+
+  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/feast?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: root
+    password: root
+
+  jpa:
+    hibernate:
+#      创建更新表的方式
+
+      ddl-auto: update
+#      控制台显示sqldatabase:mysql
+    show-sql: true
+    database: mysql
+logging:
+  pattern:
+    console: "%d-%msg%n"
+    file: /var/log/selldish.log
+    level:
+      com.imooc.LoggerTest：debug
+
+#      将com.imooc.loggertest类的日志级别设置为debug
+

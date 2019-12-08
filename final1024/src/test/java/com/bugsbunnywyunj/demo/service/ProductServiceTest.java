@@ -48,17 +48,15 @@ class ProductServiceTest {
     @Test
     void save() {
         ProductInfo productInfo = new ProductInfo();
-
-        productInfo.setProductName("皮皮虾");
+        productInfo.setProductId("135");
+        productInfo.setProductName("皮蛋粥");
         productInfo.setProductPrice(new BigDecimal(3.2));
         productInfo.setProductStock(100);
-        productInfo.setProductDescription("很好吃的虾");
+        productInfo.setProductDescription("很好喝的粥");
         productInfo.setProductIcon("http://xxxxx.jpg");
-        productInfo.setProductStatus(ProductStatusEnum.DOWN.getCode());
+        productInfo.setProductStatus(0);
         productInfo.setCategoryType(2);
-        Date data=new Date();
-        productInfo.setCreateTime(data);
-        productInfo.setUpdateTime(data);
+        productInfo.setShopId("1");
 
         ProductInfo result = productService.save(productInfo);
         Assert.assertNotNull(result);

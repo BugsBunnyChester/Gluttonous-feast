@@ -39,4 +39,7 @@ public class OrderDetail {
     /** 商品小图. */
     @Column(name="product_Icon",length = 50)
     private String productIcon;
+    @Column(name = "shop_Id",length = 50)
+    private String shopId;
+
 }

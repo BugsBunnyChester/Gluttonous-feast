@@ -70,7 +70,7 @@ function GetCount() {
 			$("#table2").remove();
 			});
 		});
-<!---商品加减算总数---->
+// <!---商品加减算总数---->
 	$(function () {
 		var t = $("#text_box2");
 		$("#add2").click(function () {
@@ -90,6 +90,9 @@ function GetCount() {
 	})
 	$(function () {
 		var t = $("#text_box1");
+		// 1
+		var p=$("#price");
+
 		$("#add1").click(function () {
 			t.val(parseInt(t.val()) + 1)
 			setTotal(); GetCount();
@@ -101,12 +104,12 @@ function GetCount() {
 		})
 		function setTotal() {
 
-			$("#total1").html((parseInt(t.val()) * 59).toFixed(2));
-			$("#newslist-1").val(parseInt(t.val()) * 59);
+			$("#total1").html((parseInt(t.val()) * p.val()).toFixed(2));
+			$("#newslist-1").val(parseInt(t.val()) *p.val());
 		}
 		setTotal();
 	})
-<!---总数---->
+// <!---总数---->
 	$(function () {
 		$(".quanxun").click(function () {
 			setTotal();
@@ -114,14 +117,16 @@ function GetCount() {
 		});
 		function setTotal() {
 			var len = $(".tot");
-			var num = 0;
+			var num = 0.00;
 			for (var i = 0; i < len.length; i++) {
-				num = parseInt(num) + parseInt($(len[i]).text());
+				//changed  .toFixed(2)
+				num = parseFloat(num).toFixed(2) + parseFloat($(len[i]).text()).toFixed(2);
 
 			}
 			//alert(len.length);
-			$("#zong1").text(parseInt(num).toFixed(2));
+			$("#zong1").text(parseFloat(num).toFixed(2));
 			$("#shuliang").text(len.length);
+
 		}
 		//setTotal();
 	})

@@ -36,7 +36,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<ProductInfo> findByShopId(String shopId) {
-        return null;
+        return repository.findByShopId(shopId);
     }
 
     @Override

@@ -69,6 +69,12 @@ public class OrderServiceImp implements OrderService {
 //                throw new ResponseBankException();
             }
 
+
+
+
+
+
+
             //2. 计算订单总价
             orderAmount = productInfo.getProductPrice()
                     .multiply(new BigDecimal(orderDetail.getProductQuantity()))
@@ -102,6 +108,7 @@ public class OrderServiceImp implements OrderService {
 
         //发送websocket消息
 //        webSocket.sendMessage(orderDTO.getOrderId());
+        orderDTO.setOrderAmount(orderAmount);
 
         return orderDTO;
     }

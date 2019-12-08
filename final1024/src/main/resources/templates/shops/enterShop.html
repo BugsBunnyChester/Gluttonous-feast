@@ -77,7 +77,7 @@ $(function(){
 </header>
 <!--Start content-->
 <section class="slp" >
-    <section class="food-hd" th:each="shop : ${session.shopos}">
+    <section class="food-hd" th:each="dish : ${session.enterShopDishs}">
         <div class="foodpic">
             <img src="upload/02.jpg" id="showimg">
             <ul class="smallpic">
@@ -86,11 +86,11 @@ $(function(){
         </div>
         <div class="foodtext">
             <div class="foodname_a">
-                <h1 th:text="${shop.shopName}">酸辣土豆丝</h1>
-                <p th:text="${shop.shopDexcrip}">西安市丈八路220号</p>
+                <h1 th:text="${dish.getProductName()}">酸辣土豆丝</h1>
+                <p th:text="${dish.getProductDescription()}">西安市丈八路220号</p>0
             </div>
             <div class="price_a">
-                <p class="price01">促销：￥<span><a th:text="${shop.shopId}">59.00</a></span></p>
+                <p class="price01">促销：￥<span><a th:text="${dish.getProductPrice()}">59.00</a></span></p>
                 <p class="price02">价格：￥<s>69.00</s></p>
             </div>
             <div class="Freight">
@@ -112,16 +112,22 @@ $(function(){
                     <p>送幸福积分</p>
                 </li>
             </ul>
-            <form action="cart.html">
+<!--            <form th:action="@{/in_cart(dishInCart=${dish.getProductId()})}">-->
+            <form th:action="@{/in_cart(dishIdInCart=${dish.getProductId()})}">
                 <div class="BuyNo">
                     <span>我要买：<input type="number" name="Number" required autofocus min="1" value="1"/>份</span>
                     <span>库存：3258</span>
                     <div class="Buybutton">
-                        <input name="" type="submit" value="加入购物车" class="BuyB">
+                        <input name=""  type="submit" value="加入购物车" class="BuyB">
+                        <input name="dishIdInCart"  type="hidden" th:value="${dish.getProductId()}" class="BuyB">
+<!--                        <a th:href="@{/in_cart(dishIdInCart=${dish.getProductId()},Number=1)}"><span class="BuyB">加入购物车</span></a>-->
                         <a href="shop.html"><span class="Backhome">进入店铺首页</span></a>
                     </div>
                 </div>
+            </form>
         </div>
+
+
 <!--        <div class="viewhistory">-->
 <!--            <span class="VHtitle">看了又看</span>-->
 <!--            <ul class="Fsulist">-->
@@ -138,6 +144,7 @@ $(function(){
 <!--            </ul>-->
 <!--        </div>-->
     </section>
+
  <!--bottom content-->
  <section class="Bcontent">
   <article>
@@ -218,6 +225,9 @@ $(function(){
         </a>
        </div>
    </div>
+  </div>
+   </div>
+
   </article>
   <!--ad&other infor-->
   <aside>

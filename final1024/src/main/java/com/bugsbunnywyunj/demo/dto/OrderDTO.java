@@ -53,6 +53,31 @@ public class OrderDTO {
 
     List<OrderDetail> orderDetailList;
 
+    public String getBuyerAddress(int num) {
+        String[] a = new String[1];
+        if(buyerAddress==null)
+        {
+            a[0]="未设置地址";
+        }else {
+            a = buyerAddress.split(",");
+        }
+        if(a[num].isEmpty())
+        {
+            a[num]="空";
+        }
+        return  a[num];
+    }
+    public String[] getBuyerAddress(int e,int s) {
+        String[] a = new String[1];
+        if(buyerAddress==null)
+        {
+            a[0]="未设置地址";
+        }else {
+             a = buyerAddress.split(",");
+        }
+        return  a;
+    }
+
     @JsonIgnore
     public OrderStatusEnum getOrderStatusEnum() {
         return EnumUtil.getByCode(orderStatus, OrderStatusEnum.class);
